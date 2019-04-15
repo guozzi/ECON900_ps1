@@ -2,6 +2,8 @@ import urllib.request
 import os
 import time
 import datetime
+from time import sleep
+from random import randint
 
 if not os.path.exists("html_files"):
 	os.mkdir("html_files")
@@ -15,4 +17,5 @@ for page in pages:
     html = response.read()
     f.write(html)
     f.close()
+    sleep(randint(5,20))    
 
