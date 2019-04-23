@@ -22,6 +22,11 @@ for one_file_name in glob.glob("html_files/*.html"):
 		Geek_Rating = r.find("td", {"class": "collection_bggrating"}).text
 		Avg_Rating = r.find("td", {"class": "collection_bggrating"}).find_next_sibling("td").text
 		Votes = r.find("td", {"class": "collection_bggrating"}).find_next_sibling("td").find_next_sibling("td").text
+		try: 
+		    App_Price = r.find("td", {"class": "collection_shop"}).find("span", {"class": "positive"}).text
+		except AttributeError:
+			App_Price = "N/A"
+
 
 
 
@@ -31,7 +36,8 @@ for one_file_name in glob.glob("html_files/*.html"):
 			'Name': Name, # Name of the game
 			'Geek_Rating': Geek_Rating, # Rating given by boardgamegeek.com
 			'Avg_Rating': Avg_Rating, # Average rating given by users
-			'Votes': Votes # Total user votes
+			'Votes': Votes, # Total user votes
+			'App_Price': App_Price # IOS App price
 			}, ignore_index=True)
 
 
